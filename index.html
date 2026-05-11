@@ -9,204 +9,150 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --red:#C8102E;--dred:#8B0000;--gold:#C9A84C;--green:#006847;
-  --dark:#111111;--dgray:#3C3C3C;--mgray:#888;--lgray:#F5F5F5;
-  --white:#fff;--off:#F9F9F9;
-  --font-display:'Barlow Condensed',sans-serif;
-  --font-body:'Barlow',sans-serif;
+  --red:#C8102E;--dred:#8B0000;--gold:#C9A84C;--green:#006847;--blue:#0070C0;--purple:#5B2C8D;--org:#B06000;
+  --dark:#111111;--dgray:#3C3C3C;--mgray:#888;--lgray:#F5F5F5;--white:#fff;
+  --font-d:'Barlow Condensed',sans-serif;--font-b:'Barlow',sans-serif;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--white);color:var(--dgray);overflow-x:hidden}
-
-/* NAV */
+body{font-family:var(--font-b);background:var(--white);color:var(--dgray);overflow-x:hidden}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(17,17,17,.96);backdrop-filter:blur(8px);border-bottom:2px solid var(--red)}
-.nav-inner{max-width:900px;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;height:48px}
-.nav-logo{font-family:var(--font-display);font-weight:900;font-size:1.1rem;color:var(--white);letter-spacing:.05em}
+.nav-i{max-width:960px;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;height:48px}
+.nav-logo{font-family:var(--font-d);font-weight:900;font-size:1.1rem;color:var(--white);letter-spacing:.05em}
 .nav-logo span{color:var(--red)}
 .nav-links{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
 .nav-links::-webkit-scrollbar{display:none}
-.nav-links a{font-family:var(--font-display);font-size:.75rem;font-weight:600;letter-spacing:.08em;color:#999;text-decoration:none;padding:.4rem .6rem;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
-.nav-links a.active{color:var(--white);border-bottom-color:var(--red)}
-.nav-links a:hover{color:var(--white)}
-
-/* HERO */
-#hero{background:var(--dark);min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:80px 1.5rem 3rem;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(0deg,transparent,transparent 49px,#fff 49px,#fff 50px),repeating-linear-gradient(90deg,transparent,transparent 49px,#fff 49px,#fff 50px)}
+.nav-links a{font-family:var(--font-d);font-size:.72rem;font-weight:600;letter-spacing:.08em;color:#999;text-decoration:none;padding:.4rem .55rem;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.nav-links a.active,.nav-links a:hover{color:var(--white);border-bottom-color:var(--red)}
+#hero{background:var(--dark);min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 0 0;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 49px,#fff 49px,#fff 50px),repeating-linear-gradient(90deg,transparent,transparent 49px,#fff 49px,#fff 50px)}
 .hero-stripe{position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--red)}
 .hero-gold{position:absolute;bottom:0;left:0;right:0;height:5px;background:var(--gold)}
-.hero-label{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.2em;color:#555;text-transform:uppercase;margin-bottom:1rem}
-.hero-title{font-family:var(--font-display);font-weight:900;font-size:clamp(5rem,20vw,9rem);line-height:.88;color:var(--white);letter-spacing:-.02em}
+.hero-wrap{max-width:960px;margin:0 auto;width:100%;padding:2.5rem 1.5rem 3rem;display:grid;grid-template-columns:1fr;gap:2rem;position:relative;z-index:1}
+@media(min-width:700px){.hero-wrap{grid-template-columns:1fr auto;align-items:center}}
+.hero-eyebrow{font-family:var(--font-d);font-size:.7rem;font-weight:700;letter-spacing:.2em;color:#555;text-transform:uppercase;margin-bottom:.75rem;display:block}
+.hero-title{font-family:var(--font-d);font-weight:900;font-size:clamp(4.5rem,14vw,7.5rem);line-height:.88;color:var(--white);letter-spacing:-.02em}
 .hero-title .copa{color:var(--red);display:block}
-.hero-title .year{color:#333;font-size:clamp(3rem,12vw,6rem);display:block;letter-spacing:.04em}
-.hero-sub{font-family:var(--font-body);font-size:clamp(.85rem,3vw,1rem);color:#777;margin-top:1.5rem;font-style:italic;line-height:1.5;max-width:420px}
-.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:2.5rem;max-width:420px}
-.hstat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:1rem;text-align:center}
-.hstat-n{font-family:var(--font-display);font-size:2.2rem;font-weight:900;display:block;line-height:1}
-.hstat-l{font-size:.7rem;color:#666;display:block;margin-top:.3rem;line-height:1.3}
-.n-red{color:var(--red)}.n-green{color:var(--green)}.n-gold{color:var(--gold)}.n-gray{color:#888}
-
-/* SECTIONS */
-section{padding:4rem 1.5rem;max-width:900px;margin:0 auto}
-.sec-label{font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem}
-.sec-title{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,5vw,2.4rem);color:var(--dark);line-height:1.1;margin-bottom:1rem}
-.sec-sub{font-size:.95rem;color:var(--mgray);line-height:1.6;margin-bottom:2rem;font-style:italic}
-.divider{height:1px;background:linear-gradient(90deg,var(--red),transparent);margin-bottom:2rem}
-
-/* CONCEITO */
-#conceito .sec-label{color:var(--red)}
-.conceito-body{font-size:1rem;line-height:1.7;color:var(--dgray);margin-bottom:1.5rem}
-.conceito-body strong{color:var(--dark)}
-.hook-box{background:var(--dark);border-left:4px solid var(--gold);padding:1.25rem 1.5rem;border-radius:0 8px 8px 0;margin-top:1.5rem}
-.hook-box p{font-size:.9rem;color:#ccc;line-height:1.6}
-.hook-box strong{color:var(--gold)}
-
-/* ESTRUTURA */
-#estrutura{background:var(--lgray);max-width:100%;padding:4rem 0}
-#estrutura .inner{max-width:900px;margin:0 auto;padding:0 1.5rem}
-#estrutura .sec-label{color:var(--green)}
-.phases{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
-@media(min-width:640px){.phases{flex-direction:row}}
-.phase{flex:1;background:var(--white);border-radius:10px;overflow:hidden;border:1px solid #e8e8e8}
-.phase-header{padding:1rem 1.2rem .8rem;position:relative}
-.phase-num{position:absolute;right:1rem;top:.8rem;font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:rgba(0,0,0,.06);line-height:1}
-.phase-tag{font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;display:block;margin-bottom:.3rem}
-.phase-name{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--dark)}
-.phase-body{padding:.8rem 1.2rem 1.2rem;font-size:.85rem;line-height:1.6;color:var(--mgray)}
-.phase-body strong{color:var(--dgray);display:block;margin-top:.5rem}
-.ph1 .phase-header{border-top:4px solid var(--green)}
-.ph1 .phase-tag{color:var(--green)}
-.ph2 .phase-header{border-top:4px solid #B06000}
-.ph2 .phase-tag{color:#B06000}
-.ph3 .phase-header{border-top:4px solid var(--red)}
-.ph3 .phase-tag{color:var(--red)}
-.method-box{margin-top:1.5rem;background:var(--white);border:1px solid #e8e8e8;border-radius:10px;padding:1.2rem 1.5rem;display:flex;gap:1rem;align-items:flex-start}
-.method-icon{width:36px;height:36px;background:var(--green);border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
-.method-text{font-size:.85rem;line-height:1.5;color:var(--dgray)}
-.method-text strong{color:var(--dark);display:block;margin-bottom:.2rem}
-
-/* CRONOGRAMA */
-#cronograma .sec-label{color:var(--red)}
-.timeline{display:flex;flex-direction:column;gap:.5rem;margin-top:1.5rem}
-.tl-item{display:grid;grid-template-columns:90px 1fr;gap:.75rem;align-items:start}
-.tl-date{font-family:var(--font-display);font-size:.75rem;font-weight:700;color:var(--mgray);padding-top:.6rem;letter-spacing:.03em;line-height:1.3}
-.tl-card{border-radius:8px;padding:.75rem 1rem;position:relative;overflow:hidden}
-.tl-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
-.tl-fase{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--dark)}
-.tl-desc{font-size:.82rem;color:var(--mgray);margin-top:.2rem;line-height:1.4}
-.tl-badge{display:inline-block;font-family:var(--font-display);font-size:.6rem;font-weight:700;letter-spacing:.1em;padding:.2rem .5rem;border-radius:4px;margin-left:.5rem;vertical-align:middle;text-transform:uppercase}
-.tl-pre{background:#f5f5f5}.tl-pre::before{background:#999}
-.tl-g1{background:#EBF7F0}.tl-g1::before{background:var(--green)}
-.tl-g2{background:#EBF7F0}.tl-g2::before{background:var(--green)}
-.tl-t{background:#FFF3E0}.tl-t::before{background:#B06000}
-.tl-e1{background:#FDECEA}.tl-e1::before{background:var(--red)}
-.tl-e2{background:#FDECEA}.tl-e2::before{background:var(--dred)}
-.tl-f{background:#FFFBF0}.tl-f::before{background:var(--gold)}
-.badge-green{background:var(--green);color:#fff}
-.badge-orange{background:#B06000;color:#fff}
-.badge-red{background:var(--red);color:#fff}
-.badge-gold{background:var(--gold);color:#111}
-
-/* PONTUAÇÃO */
-#pontuacao{background:var(--dark);max-width:100%;padding:4rem 0;color:var(--white)}
-#pontuacao .inner{max-width:900px;margin:0 auto;padding:0 1.5rem}
-#pontuacao .sec-label{color:var(--gold)}
-#pontuacao .sec-title{color:var(--white)}
-.pts-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem}
-.pts-tab{font-family:var(--font-display);font-size:.85rem;font-weight:700;padding:.5rem 1.2rem;border-radius:6px;cursor:pointer;border:1px solid rgba(255,255,255,.15);color:#999;letter-spacing:.05em;transition:all .2s;background:transparent}
-.pts-tab.active{background:var(--red);color:var(--white);border-color:var(--red)}
-.pts-panel{display:none}.pts-panel.active{display:block}
-.pts-rows{display:flex;flex-direction:column;gap:.5rem}
-.pts-row{display:grid;grid-template-columns:36px 1fr auto;gap:.75rem;align-items:center;padding:.75rem 1rem;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+.hero-title .year{color:#2e2e2e;font-size:clamp(2.5rem,9vw,5rem);display:block;letter-spacing:.04em}
+.hero-sub{font-size:.9rem;color:#666;margin-top:1.25rem;font-style:italic;line-height:1.6;max-width:400px}
+.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+@media(min-width:700px){.hero-stats{width:240px;flex-shrink:0}}
+.hstat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.9rem .7rem;text-align:center}
+.hstat-n{font-family:var(--font-d);font-size:2rem;font-weight:900;display:block;line-height:1}
+.hstat-l{font-size:.67rem;color:#666;display:block;margin-top:.3rem;line-height:1.3}
+.r{color:var(--red)}.g{color:var(--green)}.o{color:#888}.gold{color:var(--gold)}
+.section{padding:4rem 1.5rem;max-width:960px;margin:0 auto}
+.bg-off{background:var(--lgray);max-width:100%;padding:4rem 0}
+.bg-dark{background:var(--dark);max-width:100%;padding:4rem 0;color:var(--white)}
+.inner{max-width:960px;margin:0 auto;padding:0 1.5rem}
+.eyebrow{font-family:var(--font-d);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.4rem;display:block}
+.sec-title{font-family:var(--font-d);font-weight:700;font-size:clamp(1.6rem,5vw,2.2rem);color:var(--dark);line-height:1.1;margin-bottom:.9rem}
+.sec-title.light{color:var(--white)}
+.divider{height:1px;background:linear-gradient(90deg,var(--red),transparent);margin-bottom:1.8rem}
+.body-text{font-size:.97rem;line-height:1.7;color:var(--dgray);margin-bottom:1.2rem}
+.body-text strong{color:var(--dark)}
+.callout{border-left:4px solid var(--gold);padding:1rem 1.25rem;border-radius:0 8px 8px 0;background:#FFF8E1;font-size:.88rem;color:#7A5800;line-height:1.6;margin:1.4rem 0}
+.callout.blue{border-left-color:var(--blue);background:#EEF4FF;color:#003080}
+.h-groups{display:flex;flex-direction:column;gap:.6rem;margin-top:1.4rem}
+@media(min-width:640px){.h-groups{flex-direction:row;gap:.5rem}}
+.hg{flex:1;border-radius:8px;overflow:hidden;border:1px solid #e8e8e8}
+.hg-head{padding:.7rem 1rem;position:relative}
+.hg-code{font-family:var(--font-d);font-size:1.6rem;font-weight:900;display:block;line-height:1;color:#fff}
+.hg-range{font-size:.72rem;color:rgba(255,255,255,.75);display:block;margin-top:.1rem}
+.hg-num{position:absolute;right:.8rem;top:.6rem;font-family:var(--font-d);font-size:2rem;font-weight:900;opacity:.25;color:#fff;line-height:1}
+.hg-body{padding:.7rem 1rem;background:var(--white)}
+.hg-label{font-size:.8rem;font-weight:600;display:block;margin-bottom:.25rem}
+.hg-detail{font-size:.75rem;color:var(--mgray)}
+.timeline{display:flex;flex-direction:column;gap:.55rem;margin-top:1.4rem}
+.tl-row{display:grid;grid-template-columns:88px 1fr;gap:.75rem;align-items:start}
+.tl-date{font-family:var(--font-d);font-size:.73rem;font-weight:700;color:var(--mgray);padding-top:.6rem;line-height:1.3}
+.tl-card{border-radius:8px;padding:.75rem 1rem;border-left:3px solid}
+.tl-fase{font-family:var(--font-d);font-size:.95rem;font-weight:700;color:var(--dark)}
+.tl-desc{font-size:.82rem;color:var(--mgray);margin-top:.25rem;line-height:1.4}
+.tl-badge{display:inline-block;font-family:var(--font-d);font-size:.6rem;font-weight:700;letter-spacing:.1em;padding:.2rem .5rem;border-radius:4px;margin-left:.4rem;vertical-align:middle;text-transform:uppercase}
+.pre{background:#f5f5f5;border-left-color:#999}.tg{background:#EBF7F0;border-left-color:var(--green)}
+.tt{background:#FFF3E0;border-left-color:var(--org)}.te{background:#FDECEA;border-left-color:var(--red)}
+.tf{background:#FFFBF0;border-left-color:var(--gold)}
+.bg{background:var(--green);color:#fff}.bo{background:var(--org);color:#fff}.br{background:var(--red);color:#fff}.bgold{background:var(--gold);color:#111}
+.duelo-box{background:#0C2340;border-radius:10px;padding:1.2rem 1.4rem;margin-top:1.2rem}
+.duelo-title{font-family:var(--font-d);font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.duelo-items{display:flex;flex-direction:column;gap:.5rem}
+.duelo-item{display:grid;grid-template-columns:68px 1fr;gap:.6rem}
+.duelo-day{font-family:var(--font-d);font-size:.73rem;font-weight:700;color:#aaa;padding-top:2px}
+.duelo-text{font-size:.82rem;color:#ccc;line-height:1.4}
+.pts-wrap{background:var(--dark);border-radius:10px;overflow:hidden;margin-bottom:1.5rem}
+.pts-tabs{display:flex}
+.pts-tab{flex:1;font-family:var(--font-d);font-size:.78rem;font-weight:700;padding:.6rem .4rem;cursor:pointer;border:none;background:rgba(255,255,255,.06);color:#888;letter-spacing:.04em;transition:all .2s}
+.pts-tab.active{background:var(--red);color:var(--white)}
+.pts-tab.ag{background:var(--green) !important}
+.pts-tab.ap{background:var(--purple) !important}
+.pts-panel{display:none;padding:1rem}.pts-panel.active{display:block}
+.pts-rows{display:flex;flex-direction:column;gap:.4rem}
+.pts-row{display:grid;grid-template-columns:28px 1fr auto;gap:.6rem;align-items:center;padding:.6rem .8rem;border-radius:7px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
 .pts-row.hl{background:rgba(200,16,46,.15);border-color:rgba(200,16,46,.3)}
-.pts-row.hl-green{background:rgba(0,104,71,.2);border-color:rgba(0,104,71,.35)}
-.pts-icon{font-size:1.1rem;text-align:center}
-.pts-name{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--white);display:block}
-.pts-desc{font-size:.78rem;color:#777;line-height:1.3;display:block;margin-top:.1rem}
-.pts-val{font-family:var(--font-display);font-size:.9rem;font-weight:700;color:var(--gold);white-space:nowrap;text-align:right}
-
-/* PREMIAÇÃO */
-#premiacao .sec-label{color:var(--gold)}
-.prizes-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem}
-@media(min-width:600px){.prizes-grid{grid-template-columns:repeat(4,1fr)}}
-.prize-card{border:1px solid #e8e8e8;border-radius:10px;padding:1rem;text-align:center}
-.prize-card.main{border-color:var(--gold);background:#FFFBF0}
-.prize-icon{font-size:1.8rem;display:block;margin-bottom:.5rem}
-.prize-name{font-family:var(--font-display);font-size:.85rem;font-weight:700;color:var(--dark);display:block;line-height:1.2;margin-bottom:.3rem}
-.prize-val{font-family:var(--font-display);font-size:1.1rem;font-weight:900;color:var(--red);display:block}
-.prize-card.main .prize-val{color:#9A7500}
-.prize-detail{font-size:.7rem;color:var(--mgray);margin-top:.3rem;line-height:1.3;display:block}
-.prizes-especiais{margin-top:1rem}
-.prizes-especiais .sec-mini{font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--mgray);margin-bottom:.75rem}
-.spec-list{display:flex;flex-direction:column;gap:.5rem}
-.spec-item{display:grid;grid-template-columns:32px 1fr auto;gap:.75rem;align-items:center;padding:.7rem .9rem;background:var(--lgray);border-radius:8px}
-.spec-icon{font-size:1.1rem;text-align:center}
-.spec-name{font-family:var(--font-display);font-size:.9rem;font-weight:700;color:var(--dark);display:block}
-.spec-detail{font-size:.75rem;color:var(--mgray);display:block;margin-top:.1rem}
-.spec-val{font-family:var(--font-display);font-size:.85rem;font-weight:700;color:var(--dgray);text-align:right}
-
-/* INVESTIMENTO */
-#investimento{background:var(--lgray);max-width:100%;padding:4rem 0}
-#investimento .inner{max-width:900px;margin:0 auto;padding:0 1.5rem}
-#investimento .sec-label{color:var(--dark)}
-.inv-table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:.85rem}
-.inv-table th{background:var(--dark);color:var(--white);padding:.6rem .8rem;font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.05em;text-align:left}
-.inv-table th:last-child{text-align:right}
-.inv-table td{padding:.6rem .8rem;border-bottom:1px solid #e8e8e8;background:var(--white);vertical-align:middle}
-.inv-table td:last-child{text-align:right;font-family:var(--font-display);font-weight:600;color:var(--dgray);white-space:nowrap}
-.inv-table tr.cat-row td{background:#f0f0f0;font-weight:700;font-size:.75rem;letter-spacing:.05em;color:var(--mgray);text-transform:uppercase;padding:.4rem .8rem}
-.inv-total{display:flex;align-items:center;justify-content:space-between;background:var(--dark);border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.5rem}
-.inv-total-label{font-family:var(--font-display);font-weight:700;font-size:.95rem;color:var(--white);letter-spacing:.05em}
-.inv-total-val{font-family:var(--font-display);font-weight:900;font-size:1.8rem;color:var(--gold)}
-.cenarios{display:grid;grid-template-columns:1fr;gap:.75rem;margin-top:1.5rem}
-@media(min-width:600px){.cenarios{grid-template-columns:repeat(3,1fr)}}
-.cenario{background:var(--white);border:1px solid #e0e0e0;border-radius:10px;padding:1.25rem;position:relative;overflow:hidden}
-.cenario.rec{border-color:var(--gold);border-width:2px}
-.cenario-badge{display:block;font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--white);background:var(--gold);padding:.25rem .6rem;border-radius:4px;display:inline-block;margin-bottom:.5rem}
-.cenario-label{font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.3rem}
-.cenario-val{font-family:var(--font-display);font-size:1.8rem;font-weight:900;color:var(--dark);display:block;margin-bottom:.5rem}
-.cenario-desc{font-size:.78rem;color:var(--mgray);line-height:1.5}
-.inv-note{background:#FFF8E1;border-left:3px solid var(--gold);padding:.9rem 1rem;border-radius:0 8px 8px 0;font-size:.82rem;color:#7A5800;line-height:1.5;margin-top:1rem}
-
-/* COMUNICAÇÃO */
-#comunicacao .sec-label{color:var(--red)}
-.comm-list{display:flex;flex-direction:column;gap:.6rem;margin-top:1.5rem}
-.comm-item{display:grid;grid-template-columns:80px 1fr;gap:.8rem;align-items:start}
-.comm-when{font-family:var(--font-display);font-size:.75rem;font-weight:700;color:var(--mgray);line-height:1.3;padding-top:.6rem}
-.comm-card{background:var(--lgray);border-radius:8px;padding:.75rem 1rem;border-left:3px solid var(--red)}
-.comm-what{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--dark)}
-.comm-canal{display:inline-block;font-size:.65rem;font-family:var(--font-display);font-weight:700;letter-spacing:.08em;background:#e0e0e0;color:var(--mgray);padding:.15rem .5rem;border-radius:4px;margin:.3rem 0;text-transform:uppercase}
+.pts-row.hlg{background:rgba(0,104,71,.2);border-color:rgba(0,104,71,.35)}
+.pts-row.hlp{background:rgba(91,44,141,.2);border-color:rgba(91,44,141,.35)}
+.pts-icon{font-size:.95rem;text-align:center}
+.pts-name{font-family:var(--font-d);font-size:.88rem;font-weight:700;color:var(--white);display:block}
+.pts-desc{font-size:.75rem;color:#777;line-height:1.3;display:block}
+.pts-val{font-family:var(--font-d);font-size:.85rem;font-weight:700;color:var(--gold);white-space:nowrap;text-align:right}
+.pz-tabs{display:flex;gap:.4rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.pz-tab{font-family:var(--font-d);font-size:.8rem;font-weight:700;padding:.45rem .9rem;border-radius:6px;cursor:pointer;border:1px solid rgba(255,255,255,.15);color:#999;letter-spacing:.04em;transition:all .2s;background:transparent}
+.pz-tab.active{background:var(--gold);color:var(--dark);border-color:var(--gold)}
+.pz-panel{display:none}.pz-panel.active{display:block}
+.pz-rows{display:flex;flex-direction:column;gap:.4rem}
+.pz-row{display:grid;grid-template-columns:56px 1fr auto;gap:.7rem;align-items:center;padding:.65rem .85rem;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07)}
+.pz-grp{font-family:var(--font-d);font-size:1.05rem;font-weight:900;text-align:center;display:block}
+.pz-cat{font-family:var(--font-d);font-size:.88rem;font-weight:700;color:var(--white);display:block}
+.pz-det{font-size:.73rem;color:#888;display:block;margin-top:.05rem}
+.pz-val{font-family:var(--font-d);font-size:1.05rem;font-weight:900;white-space:nowrap;text-align:right}
+.onhappy{display:inline-block;background:var(--blue);color:var(--white);font-family:var(--font-d);font-size:.62rem;font-weight:700;padding:.18rem .45rem;border-radius:4px;letter-spacing:.05em;margin-top:.2rem}
+.esp-section{margin-top:1.5rem}
+.esp-title{font-family:var(--font-d);font-size:.63rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#888;margin-bottom:.7rem}
+.esp-rows{display:flex;flex-direction:column;gap:.4rem}
+.esp-row{display:grid;grid-template-columns:26px 1fr auto;gap:.6rem;align-items:center;padding:.55rem .7rem;border-radius:7px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07)}
+.esp-icon{font-size:.9rem;text-align:center}
+.esp-nm{font-family:var(--font-d);font-size:.85rem;font-weight:700;color:var(--white);display:block}
+.esp-dt{font-size:.72rem;color:#777;display:block}
+.esp-v{font-family:var(--font-d);font-size:.8rem;font-weight:700;color:#aaa;text-align:right;white-space:nowrap}
+.inv-scen{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:1.4rem}
+@media(max-width:599px){.inv-scen{grid-template-columns:1fr}}
+.inv-c{border-radius:10px;padding:1.1rem;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.04)}
+.inv-c.rec{border-color:var(--gold);border-width:2px;background:rgba(201,168,76,.07)}
+.inv-badge{font-family:var(--font-d);font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;display:inline-block;background:var(--gold);color:#111;padding:.2rem .5rem;border-radius:4px;margin-bottom:.4rem}
+.inv-lbl{font-family:var(--font-d);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.2rem}
+.inv-v{font-family:var(--font-d);font-size:1.5rem;font-weight:900;color:var(--white);display:block}
+.inv-d{font-size:.75rem;color:#888;line-height:1.4;margin-top:.5rem}
+.inv-note{background:rgba(201,168,76,.1);border-left:3px solid var(--gold);padding:.9rem 1rem;border-radius:0 8px 8px 0;font-size:.8rem;color:#c9a84c;line-height:1.5;margin-top:1rem}
+.comm-list{display:flex;flex-direction:column;gap:.5rem;margin-top:1.4rem}
+.comm-item{display:grid;grid-template-columns:74px 1fr;gap:.7rem;align-items:start}
+.comm-when{font-family:var(--font-d);font-size:.72rem;font-weight:700;color:var(--mgray);line-height:1.3;padding-top:.6rem}
+.comm-card{border-radius:8px;padding:.75rem 1rem;border-left:3px solid var(--red);background:var(--lgray)}
+.comm-card.gold{border-left-color:var(--gold)}
+.comm-card.duelo{border-left-color:var(--blue);background:#EEF4FF}
+.comm-what{font-family:var(--font-d);font-size:.93rem;font-weight:700;color:var(--dark)}
+.comm-canal{display:inline-block;font-size:.62rem;font-family:var(--font-d);font-weight:700;letter-spacing:.08em;background:#e0e0e0;color:var(--mgray);padding:.15rem .5rem;border-radius:4px;margin:.3rem 0;text-transform:uppercase}
 .comm-desc{font-size:.8rem;color:var(--mgray);line-height:1.4;display:block}
-
-/* PRÓXIMOS */
-#proximos{background:var(--dark);max-width:100%;padding:4rem 0}
-#proximos .inner{max-width:900px;margin:0 auto;padding:0 1.5rem;text-align:center}
-#proximos .sec-label{color:var(--gold);text-align:center}
-.closing-headline{font-family:var(--font-display);font-weight:900;font-size:clamp(1.8rem,6vw,3rem);color:var(--white);line-height:1.1;margin:1rem 0}
-.closing-headline span{color:var(--red)}
-.closing-sub{font-size:.95rem;color:#777;font-style:italic;margin-bottom:2rem}
-.next-steps{display:flex;flex-direction:column;gap:.6rem;max-width:480px;margin:0 auto 2rem;text-align:left}
-.next-step{display:grid;grid-template-columns:28px 1fr;gap:.75rem;align-items:start}
-.step-num{width:28px;height:28px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.85rem;font-weight:900;color:var(--white);flex-shrink:0}
-.step-text{font-size:.9rem;color:#ccc;line-height:1.5;padding-top:4px}
-.footer{border-top:1px solid #222;padding-top:1.5rem;font-size:.75rem;color:#555;text-align:center;line-height:1.6}
-
-/* ANIMATIONS */
-.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.closing-hl{font-family:var(--font-d);font-weight:900;font-size:clamp(1.8rem,6vw,3rem);color:var(--white);line-height:1.1;margin:1rem 0;text-align:center}
+.closing-hl span{color:var(--red)}
+.closing-sub{font-size:.95rem;color:#777;font-style:italic;margin-bottom:2rem;text-align:center}
+.steps{display:flex;flex-direction:column;gap:.55rem;max-width:480px;margin:0 auto 2rem}
+.step{display:grid;grid-template-columns:26px 1fr;gap:.65rem;align-items:start}
+.step-n{width:26px;height:26px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:.8rem;font-weight:900;color:var(--white);flex-shrink:0}
+.step-t{font-size:.9rem;color:#ccc;line-height:1.5;padding-top:3px}
+.footer{border-top:1px solid #222;padding-top:1.5rem;font-size:.73rem;color:#555;text-align:center;line-height:1.6}
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
-@media(max-width:639px){
-  .tl-item{grid-template-columns:70px 1fr}
-  .tl-date{font-size:.68rem}
-}
+@media(max-width:599px){.tl-row{grid-template-columns:64px 1fr}.comm-item{grid-template-columns:60px 1fr}}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-inner">
+  <div class="nav-i">
     <div class="nav-logo">SALES <span>COPA</span> 2026</div>
     <div class="nav-links">
       <a href="#conceito">Conceito</a>
-      <a href="#estrutura">Estrutura</a>
+      <a href="#grupos">Grupos</a>
       <a href="#cronograma">Cronograma</a>
       <a href="#pontuacao">Pontuação</a>
       <a href="#premiacao">Premiação</a>
@@ -216,324 +162,253 @@ section{padding:4rem 1.5rem;max-width:900px;margin:0 auto}
   </div>
 </nav>
 
-<!-- HERO -->
 <div id="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
   <div class="hero-stripe"></div>
   <div class="hero-gold"></div>
-  <div class="hero-label">V4 Company · Endomarketing Comercial</div>
-  <h1 class="hero-title">
-    SALES
-    <span class="copa">COPA</span>
-    <span class="year">2026</span>
-  </h1>
-  <p class="hero-sub">Campanha interna de competição comercial atrelada à Copa do Mundo FIFA 2026. Junho a julho de 2026.</p>
-  <div class="hero-stats">
-    <div class="hstat"><span class="hstat-n n-red">6</span><span class="hstat-l">semanas de competição</span></div>
-    <div class="hstat"><span class="hstat-n n-green">11</span><span class="hstat-l">grupos regionais</span></div>
-    <div class="hstat"><span class="hstat-n n-gray">159</span><span class="hstat-l">franquias participantes</span></div>
-    <div class="hstat"><span class="hstat-n n-gold">2</span><span class="hstat-l">campeões — SDR e Closer</span></div>
+  <div class="hero-wrap">
+    <div>
+      <span class="hero-eyebrow">V4 Company · Endomarketing Comercial</span>
+      <h1 class="hero-title">SALES<span class="copa">COPA</span><span class="year">2026</span></h1>
+      <p class="hero-sub">Campanha interna de competição com 5 grupos de maturidade. Junho a julho de 2026 — mesmo período da Copa do Mundo FIFA.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-n r">6</span><span class="hstat-l">semanas de competição</span></div>
+      <div class="hstat"><span class="hstat-n g">5</span><span class="hstat-l">grupos H1 a H5</span></div>
+      <div class="hstat"><span class="hstat-n o">159</span><span class="hstat-l">franquias participantes</span></div>
+      <div class="hstat"><span class="hstat-n gold">12</span><span class="hstat-l">campeões · SDR · Closer · Expansão</span></div>
+    </div>
   </div>
 </div>
 
-<!-- CONCEITO -->
-<section id="conceito">
-  <div class="sec-label fade-up">O que é</div>
-  <h2 class="sec-title fade-up">Enquanto o mundo para para a Copa do Mundo, o time comercial da V4 disputa o seu próprio torneio.</h2>
+<section id="conceito" class="section">
+  <span class="eyebrow fade-up" style="color:var(--red)">O que é</span>
+  <h2 class="sec-title fade-up">Enquanto o mundo para para a Copa, o time comercial da V4 disputa o seu próprio torneio.</h2>
   <div class="divider"></div>
-  <p class="conceito-body fade-up">
-    A <strong>Sales Copa</strong> é uma campanha de 6 semanas estruturada em três camadas progressivas. Começa como <strong>competição coletiva por franquia</strong>, passa por uma fase de transição e termina como <strong>disputa individual</strong> — criando dois picos distintos de engajamento ao longo da campanha.
-  </p>
-  <p class="conceito-body fade-up">
-    A estrutura usa as <strong>11 regionais da V4</strong> como os 14 grupos da Copa. Cada regional é um grupo, cada franquia é um time. Nas fases finais, os melhores indivíduos de cada franquia classificada competem por conta própria — o melhor SDR e o melhor Closer da rede.
-  </p>
-  <div class="hook-box fade-up">
-    <p><strong>Por que agora?</strong> A Copa do Mundo FIFA 2026 acontece de 11 de junho a 19 de julho — a maior janela de atenção esportiva do planeta. É a oportunidade perfeita para ancorar uma campanha interna com um calendário que o time já acompanha.</p>
-  </div>
+  <p class="body-text fade-up">A <strong>Sales Copa</strong> é uma campanha de 6 semanas com <strong>5 grupos de maturidade</strong> — cada franquia disputa contra unidades do mesmo nível, sem vantagem de tamanho ou volume de investimento.</p>
+  <p class="body-text fade-up">Três categorias competem em cada grupo: <strong>SDR</strong>, <strong>Closer</strong> e <strong>Coordenador de Expansão</strong> (H4 e H5). Os primeiros 2 sprints usam uma narrativa de duelo antes das eliminatórias reais — todo mundo engajado desde a semana 1.</p>
+  <div class="callout fade-up"><strong>Por que grupos de maturidade?</strong> H4/H5 investem muito mais em times de vendas. Colocá-las contra H1/H2 tornaria a disputa injusta. A divisão garante que qualquer franquia tenha chances reais de vencer.</div>
 </section>
 
-<!-- ESTRUTURA -->
-<div id="estrutura">
+<div id="grupos" class="bg-off" style="padding:4rem 0">
   <div class="inner">
-    <div class="sec-label fade-up">Como funciona</div>
-    <h2 class="sec-title fade-up">3 camadas progressivas</h2>
-    <p class="sec-sub fade-up">Do coletivo ao individual — a progressão cria dois picos de engajamento ao longo das 6 semanas</p>
-    <div class="phases">
-      <div class="phase ph1 fade-up">
-        <div class="phase-header">
-          <span class="phase-num">1</span>
-          <span class="phase-tag">Sprints 1 e 2 · Coletivo</span>
-          <div class="phase-name">Fase de Grupos</div>
-        </div>
-        <div class="phase-body">
-          Franquias competem dentro da sua regional. Pontuação por <strong>média por vendedor</strong> — equaliza franquias grandes e pequenas.
-          <strong>Top 2 por regional avançam. 11 × 2 = 22 franquias classificadas.</strong>
-        </div>
-      </div>
-      <div class="phase ph2 fade-up">
-        <div class="phase-header">
-          <span class="phase-num">2</span>
-          <span class="phase-tag">Sprint 3 · Transição</span>
-          <div class="phase-name">Fase das 22</div>
-        </div>
-        <div class="phase-body">
-          As 22 franquias enviam seu melhor SDR e Closer para um ranking individual único.
-          <strong>Top 16 de cada categoria avançam para o bracket eliminatório.</strong>
-        </div>
-      </div>
-      <div class="phase ph3 fade-up">
-        <div class="phase-header">
-          <span class="phase-num">3</span>
-          <span class="phase-tag">Sprints 4, 5 e 6 · Individual</span>
-          <div class="phase-name">Oitavas → Final</div>
-        </div>
-        <div class="phase-body">
-          16 SDRs e 16 Closers em bracket eliminatório. Pontuação dobrada nas quartas e semifinal.
-          <strong>Final ao vivo em 19/07 — dia da Final da Copa do Mundo.</strong>
-        </div>
-      </div>
-    </div>
-    <div class="method-box fade-up">
-      <div class="method-icon">⚖</div>
-      <div class="method-text">
-        <strong>Por que média por vendedor — e não pontuação total?</strong>
-        Uma franquia com 10 vendedores sempre venceria uma de 2 usando pontuação total. A média equaliza o campo: uma unidade pequena com alta performance compete em igualdade com uma grande de desempenho mediano.
-      </div>
+    <span class="eyebrow fade-up" style="color:var(--green)">Grupos de maturidade</span>
+    <h2 class="sec-title fade-up">5 grupos — cada um no seu nível</h2>
+    <p style="font-size:.88rem;color:var(--mgray);font-style:italic;margin-bottom:1.4rem" class="fade-up">H1 = mais iniciante · H5 = mais maduro. Ranking, bracket e premiação próprios.</p>
+    <div class="h-groups">
+      <div class="hg fade-up"><div class="hg-head" style="background:#0070C0"><span class="hg-num">12</span><span class="hg-code">H1</span><span class="hg-range">&lt; R$60k</span></div><div class="hg-body"><span class="hg-label" style="color:#0070C0">Iniciante</span><span class="hg-detail">12 franquias · Top 8 · 2 campeões</span></div></div>
+      <div class="hg fade-up"><div class="hg-head" style="background:var(--green)"><span class="hg-num">63</span><span class="hg-code">H2</span><span class="hg-range">R$60k–R$150k</span></div><div class="hg-body"><span class="hg-label" style="color:var(--green)">Em crescimento</span><span class="hg-detail">63 franquias · Top 16 · 2 campeões</span></div></div>
+      <div class="hg fade-up"><div class="hg-head" style="background:var(--org)"><span class="hg-num">57</span><span class="hg-code">H3</span><span class="hg-range">R$150k–R$450k</span></div><div class="hg-body"><span class="hg-label" style="color:var(--org)">Em expansão</span><span class="hg-detail">57 franquias · Top 16 · 2 campeões</span></div></div>
+      <div class="hg fade-up"><div class="hg-head" style="background:var(--red)"><span class="hg-num">15</span><span class="hg-code">H4</span><span class="hg-range">&gt; R$450k</span></div><div class="hg-body"><span class="hg-label" style="color:var(--red)">Consolidada</span><span class="hg-detail">15 franquias · Top 8 · 3 campeões</span></div></div>
+      <div class="hg fade-up"><div class="hg-head" style="background:#9A7500"><span class="hg-num">12</span><span class="hg-code">H5</span><span class="hg-range">Diretor/Reg.</span></div><div class="hg-body"><span class="hg-label" style="color:#9A7500">Referência</span><span class="hg-detail">12 franquias · Top 8 · 3 campeões + Onhappy</span></div></div>
     </div>
   </div>
 </div>
 
-<!-- CRONOGRAMA -->
-<section id="cronograma">
-  <div class="sec-label fade-up">Quando</div>
-  <h2 class="sec-title fade-up">Cronograma — 11 Jun a 19 Jul</h2>
+<section id="cronograma" class="section">
+  <span class="eyebrow fade-up" style="color:var(--red)">Quando</span>
+  <h2 class="sec-title fade-up">Cronograma — 11 Jun a 19 Jul 2026</h2>
   <div class="divider"></div>
   <div class="timeline">
-    <div class="tl-item fade-up">
-      <div class="tl-date">2–10 Jun</div>
-      <div class="tl-card tl-pre">
-        <div class="tl-fase">⚙ Pré-Copa <span class="tl-badge" style="background:#999;color:#fff">Aquecimento</span></div>
-        <div class="tl-desc">Lançamento oficial, regras, sorteio de grupos, comunicação de abertura. Ranking zerado.</div>
-      </div>
-    </div>
-    <div class="tl-item fade-up">
-      <div class="tl-date">11–20 Jun</div>
-      <div class="tl-card tl-g1">
-        <div class="tl-fase">Sprint 1 — Grupos <span class="tl-badge badge-green">Coletivo</span></div>
-        <div class="tl-desc">Franquias pontuam por média. Ranking por regional toda sexta. Craque do Jogo premiado semanalmente.</div>
-      </div>
-    </div>
-    <div class="tl-item fade-up">
-      <div class="tl-date">21–27 Jun</div>
-      <div class="tl-card tl-g2">
-        <div class="tl-fase">Sprint 2 — Grupos <span class="tl-badge badge-green">Coletivo</span></div>
-        <div class="tl-desc">Top 2 franquias por regional classificam. 22 franquias anunciadas em 27/06.</div>
-      </div>
-    </div>
-    <div class="tl-item fade-up">
-      <div class="tl-date">28 Jun–4 Jul</div>
-      <div class="tl-card tl-t">
-        <div class="tl-fase">Sprint 3 — Fase das 22 <span class="tl-badge badge-orange">Transição</span></div>
-        <div class="tl-desc">Melhor SDR e Closer de cada franquia no ranking individual único. Top 16 avançam em 4/07.</div>
-      </div>
-    </div>
-    <div class="tl-item fade-up">
-      <div class="tl-date">5–11 Jul</div>
-      <div class="tl-card tl-e1">
-        <div class="tl-fase">Sprint 4 — Oitavas <span class="tl-badge badge-red">Individual</span></div>
-        <div class="tl-desc">Bracket 1×1. Vence quem pontuar mais na semana. 16 SDRs e 16 Closers.</div>
-      </div>
-    </div>
-    <div class="tl-item fade-up">
-      <div class="tl-date">12–18 Jul</div>
-      <div class="tl-card tl-e2">
-        <div class="tl-fase">Sprint 5 — Quartas + Semi <span class="tl-badge badge-red">Individual</span></div>
-        <div class="tl-desc">Pontuação <strong>dobrada</strong> nessa fase. Cada entrega vale o dobro.</div>
-      </div>
-    </div>
-    <div class="tl-item fade-up">
-      <div class="tl-date">19 Jul</div>
-      <div class="tl-card tl-f">
-        <div class="tl-fase">Sprint 6 — Grande Final 🏆 <span class="tl-badge badge-gold">Cerimônia</span></div>
-        <div class="tl-desc">Decisão ao vivo. Cerimônia de premiação — mesmo dia da Final da Copa do Mundo FIFA 2026.</div>
-      </div>
+    <div class="tl-row fade-up"><div class="tl-date">2–10 Jun</div><div class="tl-card pre"><div class="tl-fase">⚙ Pré-Copa <span class="tl-badge" style="background:#999;color:#fff">Aquecimento</span></div><div class="tl-desc">Lançamento, grupos H1–H5 anunciados, premiações divulgadas, sorteio dos confrontos fictícios da Semana 1.</div></div></div>
+    <div class="tl-row fade-up"><div class="tl-date">11–20 Jun</div><div class="tl-card tg"><div class="tl-fase">Sprint 1 — Ranking <span class="tl-badge bg">+ Duelo fictício</span></div><div class="tl-desc">Todos os grupos acumulam pontos. Toda 2ª: confronto fictício. Toda 5ª: placar provisório. Toda 6ª: resultado + ranking + próximo confronto.</div></div></div>
+    <div class="tl-row fade-up"><div class="tl-date">21–27 Jun</div><div class="tl-card tg"><div class="tl-fase">Sprint 2 — Ranking <span class="tl-badge bg">+ Duelo fictício</span></div><div class="tl-desc">Encerramento 27/06. Top 8 (H1/H4/H5) e top 16 (H2/H3) por categoria classificados e anunciados.</div></div></div>
+    <div class="tl-row fade-up"><div class="tl-date">28 Jun–4 Jul</div><div class="tl-card tt"><div class="tl-fase">Sprint 3 — Brackets reais <span class="tl-badge bo">Transição</span></div><div class="tl-desc">Brackets eliminatórios publicados por grupo e categoria em 4/07. Confrontos 1×1 reais revelados.</div></div></div>
+    <div class="tl-row fade-up"><div class="tl-date">5–11 Jul</div><div class="tl-card te"><div class="tl-fase">Sprint 4 — Eliminatórias <span class="tl-badge br">Individual</span></div><div class="tl-desc">H2/H3: Oitavas (16→8). H1/H4/H5: Quartas (8→4). Bracket toda 2ª, placar provisório toda 5ª.</div></div></div>
+    <div class="tl-row fade-up"><div class="tl-date">12–18 Jul</div><div class="tl-card te"><div class="tl-fase">Sprint 5 — Alta pressão <span class="tl-badge br">Semis dobradas</span></div><div class="tl-desc">H2/H3: Quartas + Semifinal. H1/H4/H5: Semifinal. Pontuação dobrada nas semifinais de todos os grupos.</div></div></div>
+    <div class="tl-row fade-up"><div class="tl-date">19 Jul</div><div class="tl-card tf"><div class="tl-fase">Sprint 6 — Grande Final 🏆 <span class="tl-badge bgold">Cerimônia</span></div><div class="tl-desc">Finais ao vivo. 12 campeões coroados. Cerimônia — mesmo dia da Final da Copa do Mundo FIFA 2026.</div></div></div>
+  </div>
+  <div class="duelo-box fade-up">
+    <div class="duelo-title">⚔ Narrativa de duelo — Sprints 1 e 2 (sem eliminação real)</div>
+    <div class="duelo-items">
+      <div class="duelo-item"><div class="duelo-day">Toda 2ª</div><div class="duelo-text">Confronto fictício da semana anunciado por grupo: <em>"H2 — Unidade X (#3) enfrenta Unidade Y (#8)"</em>. Segue o ranking — 1º vs último.</div></div>
+      <div class="duelo-item"><div class="duelo-day">Toda 5ª</div><div class="duelo-text">Placar provisório: quem está vencendo, diferença de pontos, quem ainda pode virar. Urgência para os 2 últimos dias.</div></div>
+      <div class="duelo-item"><div class="duelo-day">Toda 6ª</div><div class="duelo-text">Resultado do duelo + ranking top 5 + <strong>Craque do Jogo</strong> (card especial com nome e stat) + confronto da semana seguinte.</div></div>
     </div>
   </div>
 </section>
 
-<!-- PONTUAÇÃO -->
-<div id="pontuacao">
+<div id="pontuacao" class="bg-dark" style="padding:4rem 0">
   <div class="inner">
-    <div class="sec-label fade-up">Como pontuar</div>
-    <h2 class="sec-title fade-up">Sistema de pontuação</h2>
-    <p class="sec-sub fade-up" style="color:#666">Cada categoria tem suas métricas calibradas para o que realmente importa</p>
-    <div class="pts-tabs">
-      <button class="pts-tab active" onclick="switchTab('sdr',this)">🎯 SDRs — Os Armadores</button>
-      <button class="pts-tab" onclick="switchTab('closer',this)">💥 Closers — Os Artilheiros</button>
-    </div>
-    <div id="tab-sdr" class="pts-panel active">
-      <div class="pts-rows">
-        <div class="pts-row hl-green"><span class="pts-icon">⚽</span><span><span class="pts-name">Gol</span><span class="pts-desc">1 lead qualificado gerado (SQL confirmado)</span></span><span class="pts-val">10 pts</span></div>
-        <div class="pts-row"><span class="pts-icon">🛡</span><span><span class="pts-name">Defesa</span><span class="pts-desc">1 lead resgatado do limbo (inativo há +15 dias)</span></span><span class="pts-val">8 pts</span></div>
-        <div class="pts-row"><span class="pts-icon">🤝</span><span><span class="pts-name">Assistência</span><span class="pts-desc">1 reunião agendada e efetivamente realizada</span></span><span class="pts-val">6 pts</span></div>
-        <div class="pts-row"><span class="pts-icon">🎯</span><span><span class="pts-name">Chute a Gol</span><span class="pts-desc">Volume de tentativas efetivas (ligação, e-mail, DM)</span></span><span class="pts-val">1 pt</span></div>
-        <div class="pts-row hl-green"><span class="pts-icon">🎩</span><span><span class="pts-name">Hat-Trick</span><span class="pts-desc">BÔNUS: 3 ou mais SQLs em uma única semana</span></span><span class="pts-val">+15 pts</span></div>
-        <div class="pts-row"><span class="pts-icon">🌟</span><span><span class="pts-name">Gol de Placa</span><span class="pts-desc">BÔNUS: SQL de conta fria há +30 dias</span></span><span class="pts-val">+12 pts</span></div>
+    <span class="eyebrow fade-up" style="color:var(--gold)">Como pontuar</span>
+    <h2 class="sec-title light fade-up">Sistema de pontuação</h2>
+    <p style="font-size:.88rem;color:#777;font-style:italic;margin-bottom:1.4rem" class="fade-up">Métricas idênticas em todos os grupos — validado 100% contra CRM toda sexta até 18h</p>
+    <div class="pts-wrap fade-up">
+      <div class="pts-tabs">
+        <button class="pts-tab active ag" onclick="swP('sdr',this,'ag')">🎯 SDR</button>
+        <button class="pts-tab" onclick="swP('closer',this,'')">💥 Closer</button>
+        <button class="pts-tab" onclick="swP('exp',this,'ap')">🌐 Expansão H4/H5</button>
       </div>
-    </div>
-    <div id="tab-closer" class="pts-panel">
-      <div class="pts-rows">
-        <div class="pts-row hl"><span class="pts-icon">⚽</span><span><span class="pts-name">Gol</span><span class="pts-desc">1 deal fechado dentro do mês</span></span><span class="pts-val">15 pts</span></div>
-        <div class="pts-row"><span class="pts-icon">🛡</span><span><span class="pts-name">Defesa</span><span class="pts-desc">Churn evitado — contrato salvo ou renovado</span></span><span class="pts-val">12 pts</span></div>
-        <div class="pts-row"><span class="pts-icon">🤝</span><span><span class="pts-name">Assistência</span><span class="pts-desc">Upsell ou cross-sell realizado em cliente ativo</span></span><span class="pts-val">10 pts</span></div>
-        <div class="pts-row hl"><span class="pts-icon">🎩</span><span><span class="pts-name">Hat-Trick</span><span class="pts-desc">BÔNUS: 3 ou mais deals fechados na semana</span></span><span class="pts-val">+20 pts</span></div>
-        <div class="pts-row"><span class="pts-icon">🌟</span><span><span class="pts-name">Gol de Placa</span><span class="pts-desc">BÔNUS: deal acima de 150% do ticket médio histórico</span></span><span class="pts-val">+18 pts</span></div>
-        <div class="pts-row"><span class="pts-icon">📈</span><span><span class="pts-name">Virada de Jogo</span><span class="pts-desc">BÔNUS: fechar deal marcado como 'perdido' no CRM</span></span><span class="pts-val">+15 pts</span></div>
+      <div id="pt-sdr" class="pts-panel active">
+        <div class="pts-rows">
+          <div class="pts-row hlg"><span class="pts-icon">⚽</span><span><span class="pts-name">Gol</span><span class="pts-desc">1 lead qualificado gerado (SQL confirmado no CRM)</span></span><span class="pts-val">10 pts</span></div>
+          <div class="pts-row"><span class="pts-icon">🛡</span><span><span class="pts-name">Defesa</span><span class="pts-desc">1 lead resgatado do limbo (inativo há +15 dias)</span></span><span class="pts-val">8 pts</span></div>
+          <div class="pts-row"><span class="pts-icon">🤝</span><span><span class="pts-name">Assistência</span><span class="pts-desc">1 reunião agendada e efetivamente realizada</span></span><span class="pts-val">6 pts</span></div>
+          <div class="pts-row"><span class="pts-icon">🎯</span><span><span class="pts-name">Chute a Gol</span><span class="pts-desc">Volume de tentativas efetivas (ligação, e-mail, DM)</span></span><span class="pts-val">1 pt</span></div>
+          <div class="pts-row hlg"><span class="pts-icon">🎩</span><span><span class="pts-name">Hat-Trick</span><span class="pts-desc">BÔNUS: 3 ou mais SQLs em uma única semana</span></span><span class="pts-val">+15 pts</span></div>
+          <div class="pts-row"><span class="pts-icon">🌟</span><span><span class="pts-name">Gol de Placa</span><span class="pts-desc">BÔNUS: SQL de conta fria há +30 dias</span></span><span class="pts-val">+12 pts</span></div>
+        </div>
+      </div>
+      <div id="pt-closer" class="pts-panel">
+        <div class="pts-rows">
+          <div class="pts-row hl"><span class="pts-icon">⚽</span><span><span class="pts-name">Gol</span><span class="pts-desc">1 deal fechado dentro do mês</span></span><span class="pts-val">15 pts</span></div>
+          <div class="pts-row"><span class="pts-icon">🛡</span><span><span class="pts-name">Defesa</span><span class="pts-desc">Churn evitado — contrato salvo ou renovado</span></span><span class="pts-val">12 pts</span></div>
+          <div class="pts-row"><span class="pts-icon">🤝</span><span><span class="pts-name">Assistência</span><span class="pts-desc">Upsell ou cross-sell realizado em cliente ativo</span></span><span class="pts-val">10 pts</span></div>
+          <div class="pts-row hl"><span class="pts-icon">🎩</span><span><span class="pts-name">Hat-Trick</span><span class="pts-desc">BÔNUS: 3 ou mais deals fechados na semana</span></span><span class="pts-val">+20 pts</span></div>
+          <div class="pts-row"><span class="pts-icon">🌟</span><span><span class="pts-name">Gol de Placa</span><span class="pts-desc">BÔNUS: deal acima de 150% do ticket médio</span></span><span class="pts-val">+18 pts</span></div>
+          <div class="pts-row"><span class="pts-icon">📈</span><span><span class="pts-name">Virada de Jogo</span><span class="pts-desc">BÔNUS: fechar deal marcado como 'perdido' no CRM</span></span><span class="pts-val">+15 pts</span></div>
+        </div>
+      </div>
+      <div id="pt-exp" class="pts-panel">
+        <p style="font-size:.8rem;color:#888;font-style:italic;margin-bottom:.8rem">Exclusivo dos grupos H4 e H5 — pipeline de novas franquias</p>
+        <div class="pts-rows">
+          <div class="pts-row hlp"><span class="pts-icon">⚽</span><span><span class="pts-name">Gol</span><span class="pts-desc">1 lead qualificado de expansão (SQL de nova franquia)</span></span><span class="pts-val">10 pts</span></div>
+          <div class="pts-row"><span class="pts-icon">🤝</span><span><span class="pts-name">Assistência</span><span class="pts-desc">1 apresentação/reunião com prospecto de franquia</span></span><span class="pts-val">8 pts</span></div>
+          <div class="pts-row"><span class="pts-icon">🛡</span><span><span class="pts-name">Defesa</span><span class="pts-desc">1 prospecto reativado (inativo há +30 dias)</span></span><span class="pts-val">7 pts</span></div>
+          <div class="pts-row"><span class="pts-icon">📋</span><span><span class="pts-name">Mapeamento</span><span class="pts-desc">1 novo território qualificado e mapeado</span></span><span class="pts-val">5 pts</span></div>
+          <div class="pts-row hlp"><span class="pts-icon">🎩</span><span><span class="pts-name">Hat-Trick</span><span class="pts-desc">BÔNUS: 3 ou mais leads de expansão na semana</span></span><span class="pts-val">+15 pts</span></div>
+          <div class="pts-row hlp"><span class="pts-icon">🏢</span><span><span class="pts-name">Contrato</span><span class="pts-desc">BÔNUS ESPECIAL: contrato de nova franquia assinado</span></span><span class="pts-val">+50 pts</span></div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PREMIAÇÃO -->
-<section id="premiacao">
-  <div class="sec-label fade-up">Premiação</div>
-  <h2 class="sec-title fade-up">Prêmios reais, anunciados antes do início</h2>
-  <div class="divider"></div>
-  <div class="prizes-grid">
-    <div class="prize-card main fade-up"><span class="prize-icon">🏆</span><span class="prize-name">Campeão SDR</span><span class="prize-val">R$ 1.000</span><span class="prize-detail">Vale presente + troféu personalizado</span></div>
-    <div class="prize-card main fade-up"><span class="prize-icon">🏆</span><span class="prize-name">Campeão Closer</span><span class="prize-val">R$ 1.200</span><span class="prize-detail">Vale presente + troféu personalizado</span></div>
-    <div class="prize-card fade-up"><span class="prize-icon">🥈</span><span class="prize-name">Vice SDR</span><span class="prize-val">R$ 400</span><span class="prize-detail">Vale presente + reconhecimento</span></div>
-    <div class="prize-card fade-up"><span class="prize-icon">🥈</span><span class="prize-name">Vice Closer</span><span class="prize-val">R$ 500</span><span class="prize-detail">Vale presente + reconhecimento</span></div>
-  </div>
-  <div class="prizes-especiais fade-up">
-    <div class="sec-mini">Prêmios Especiais</div>
-    <div class="spec-list">
-      <div class="spec-item"><span class="spec-icon">🌎</span><span><span class="spec-name">Franquia Campeã</span><span class="spec-detail">22 franquias classificadas — placa personalizada por regional</span></span><span class="spec-val">Placa</span></div>
-      <div class="spec-item"><span class="spec-icon">📈</span><span><span class="spec-name">Melhor da Fase das 22</span><span class="spec-detail">1 SDR + 1 Closer da fase de transição</span></span><span class="spec-val">R$ 200 cada</span></div>
-      <div class="spec-item"><span class="spec-icon">⭐</span><span><span class="spec-name">Craque do Jogo</span><span class="spec-detail">Toda sexta — 6 semanas de campanha</span></span><span class="spec-val">R$ 100/semana</span></div>
-      <div class="spec-item"><span class="spec-icon">🌎</span><span><span class="spec-name">Regional Campeã</span><span class="spec-detail">Regional com maior média geral entre suas franquias</span></span><span class="spec-val">Destaque</span></div>
+<div id="premiacao" class="bg-dark" style="padding-top:0;padding-bottom:4rem">
+  <div class="inner" style="padding-top:3rem">
+    <span class="eyebrow fade-up" style="color:var(--gold)">Premiação</span>
+    <h2 class="sec-title light fade-up">Prêmios escalonados por grupo — 3 cenários</h2>
+    <div class="callout blue fade-up" style="margin-bottom:1.4rem"><strong>Onhappy:</strong> voucher de viagem que o ganhador usa livremente na plataforma — destino, data e acompanhante à escolha, com descontos de até 60%. Os 3 campeões do H5 recebem voucher Onhappy em todos os cenários.</div>
+    <div class="pz-tabs fade-up">
+      <button class="pz-tab active" onclick="swPz('eco',this)">💸 Econômico</button>
+      <button class="pz-tab" onclick="swPz('rec',this)">⭐ Recomendado</button>
+      <button class="pz-tab" onclick="swPz('prem',this)">🏆 Premium</button>
     </div>
-  </div>
-</section>
-
-<!-- INVESTIMENTO -->
-<div id="investimento">
-  <div class="inner">
-    <div class="sec-label fade-up">Investimento</div>
-    <h2 class="sec-title fade-up">Mensuração completa do investimento</h2>
-    <p class="sec-sub fade-up">Todos os itens de premiação e produção detalhados</p>
-    <table class="inv-table fade-up">
-      <thead><tr><th>Categoria</th><th>Item</th><th style="text-align:right">Valor</th></tr></thead>
-      <tbody>
-        <tr class="cat-row"><td colspan="3">Prêmios Principais</td></tr>
-        <tr><td>Campeões</td><td>Campeão SDR — vale presente</td><td>R$ 1.000</td></tr>
-        <tr><td></td><td>Campeão Closer — vale presente</td><td>R$ 1.200</td></tr>
-        <tr><td>Vices</td><td>Vice SDR — vale presente</td><td>R$ 400</td></tr>
-        <tr><td></td><td>Vice Closer — vale presente</td><td>R$ 500</td></tr>
-        <tr><td>Troféus</td><td>2 troféus personalizados (campeões)</td><td>R$ 300</td></tr>
-        <tr class="cat-row"><td colspan="3">Prêmios Especiais</td></tr>
-        <tr><td>Fase das 22</td><td>Melhor SDR + Melhor Closer — R$200 cada</td><td>R$ 400</td></tr>
-        <tr><td>Craque do Jogo</td><td>6 semanas × R$100 por semana</td><td>R$ 600</td></tr>
-        <tr class="cat-row"><td colspan="3">Reconhecimento</td></tr>
-        <tr><td>Franquias</td><td>22 placas para franquias classificadas (~R$60/un.)</td><td>R$ 1.680</td></tr>
-        <tr><td>Regional</td><td>Regional Campeã — placa/troféu</td><td>R$ 150</td></tr>
-        
-        
-      </tbody>
-    </table>
-    <div class="inv-total fade-up">
-      <span class="inv-total-label">INVESTIMENTO TOTAL ESTIMADO</span>
-      <span class="inv-total-val">R$ 5.870</span>
-    </div>
-    <div class="cenarios">
-      <div class="cenario fade-up">
-        <span class="cenario-label" style="color:var(--green)">Enxuto</span>
-        <span class="cenario-val">R$ 4.100</span>
-        <p class="cenario-desc">Só prêmios em dinheiro, sem troféus nem placas. Funciona com orçamento restrito.</p>
-      </div>
-      <div class="cenario rec fade-up">
-        <span class="cenario-badge">Recomendado</span>
-        <span class="cenario-label" style="color:var(--gold)">Modelo completo</span>
-        <span class="cenario-val">R$ 5.870</span>
-        <p class="cenario-desc">Inclui troféus, placas para 22 franquias e materiais de comunicação. Máximo impacto.</p>
-      </div>
-      <div class="cenario fade-up">
-        <span class="cenario-label" style="color:var(--red)">Premium</span>
-        <span class="cenario-val">R$ 9.500+</span>
-        <p class="cenario-desc">Campeão SDR R$2k, Campeão Closer R$2,5k. Para campanhas de maior escala.</p>
+    <div id="pz-eco" class="pz-panel active">
+      <div class="pz-rows">
+        <div class="pz-row"><span class="pz-grp" style="color:#6699CC">H1</span><span><span class="pz-cat">🎯 SDR — Iniciante</span><span class="pz-det">12 franquias · Top 8</span></span><span class="pz-val" style="color:#aaa;font-size:.82rem">Streaming 6m + iFood R$150</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:#6699CC">H1</span><span><span class="pz-cat">💥 Closer — Iniciante</span></span><span class="pz-val" style="color:#aaa;font-size:.82rem">IA 3m + iFood R$150</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--green)">H2</span><span><span class="pz-cat">🎯 SDR — Em crescimento</span><span class="pz-det">63 franquias · Top 16</span></span><span class="pz-val" style="color:#aaa;font-size:.82rem">iFood R$200 + streaming 3m</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--green)">H2</span><span><span class="pz-cat">💥 Closer — Em crescimento</span></span><span class="pz-val" style="color:#aaa;font-size:.82rem">Gift card R$150 + iFood R$150</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--org)">H3</span><span><span class="pz-cat">🎯 SDR — Em expansão</span><span class="pz-det">57 franquias · Top 16</span></span><span class="pz-val" style="color:var(--gold)">R$ 400</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--org)">H3</span><span><span class="pz-cat">💥 Closer — Em expansão</span></span><span class="pz-val" style="color:var(--gold)">R$ 500</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--red)">H4</span><span><span class="pz-cat">🎯 SDR — Consolidada</span><span class="pz-det">15 franquias · Top 8</span></span><span class="pz-val" style="color:var(--gold)">R$ 700</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--red)">H4</span><span><span class="pz-cat">💥 Closer — Consolidada</span></span><span class="pz-val" style="color:var(--gold)">R$ 900</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--red)">H4</span><span><span class="pz-cat">🌐 Expansão — Consolidada</span></span><span class="pz-val" style="color:var(--gold)">R$ 800</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:#9A7500">H5</span><span><span class="pz-cat">🎯 SDR — Referência</span><span class="pz-det">12 franquias · Top 8</span><span class="onhappy">VOUCHER ONHAPPY</span></span><span class="pz-val" style="color:var(--gold)">R$ 800</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:#9A7500">H5</span><span><span class="pz-cat">💥 Closer — Referência</span><span class="onhappy">VOUCHER ONHAPPY</span></span><span class="pz-val" style="color:var(--gold)">R$ 800</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:#9A7500">H5</span><span><span class="pz-cat">🌐 Expansão — Referência</span><span class="onhappy">VOUCHER ONHAPPY</span></span><span class="pz-val" style="color:var(--gold)">R$ 800</span></div>
       </div>
     </div>
-    <div class="inv-note fade-up">
-      💡 <strong>Para referência:</strong> R$ 5.870 para uma campanha de 6 semanas com 159 franquias equivale a <strong>R$ 36,93 por franquia participante</strong> — ou aproximadamente <strong>R$ 6,15 por semana de engajamento</strong> por unidade.
+    <div id="pz-rec" class="pz-panel">
+      <div class="pz-rows">
+        <div class="pz-row"><span class="pz-grp" style="color:#6699CC">H1</span><span><span class="pz-cat">🎯 SDR</span></span><span class="pz-val" style="color:var(--gold)">R$ 300</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:#6699CC">H1</span><span><span class="pz-cat">💥 Closer</span></span><span class="pz-val" style="color:var(--gold)">R$ 400</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--green)">H2</span><span><span class="pz-cat">🎯 SDR</span></span><span class="pz-val" style="color:var(--gold)">R$ 500</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--green)">H2</span><span><span class="pz-cat">💥 Closer</span></span><span class="pz-val" style="color:var(--gold)">R$ 600</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--org)">H3</span><span><span class="pz-cat">🎯 SDR</span></span><span class="pz-val" style="color:var(--gold)">R$ 700</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--org)">H3</span><span><span class="pz-cat">💥 Closer</span></span><span class="pz-val" style="color:var(--gold)">R$ 900</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--red)">H4</span><span><span class="pz-cat">🎯 SDR</span></span><span class="pz-val" style="color:var(--gold)">R$ 900</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--red)">H4</span><span><span class="pz-cat">💥 Closer</span></span><span class="pz-val" style="color:var(--gold)">R$ 1.200</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--red)">H4</span><span><span class="pz-cat">🌐 Expansão</span></span><span class="pz-val" style="color:var(--gold)">R$ 1.000</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:#9A7500">H5</span><span><span class="pz-cat">🎯 SDR</span><span class="onhappy">VOUCHER ONHAPPY</span></span><span class="pz-val" style="color:var(--gold)">R$ 1.200</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:#9A7500">H5</span><span><span class="pz-cat">💥 Closer</span><span class="onhappy">VOUCHER ONHAPPY</span></span><span class="pz-val" style="color:var(--gold)">R$ 1.200</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:#9A7500">H5</span><span><span class="pz-cat">🌐 Expansão</span><span class="onhappy">VOUCHER ONHAPPY</span></span><span class="pz-val" style="color:var(--gold)">R$ 1.200</span></div>
+      </div>
+    </div>
+    <div id="pz-prem" class="pz-panel">
+      <div class="pz-rows">
+        <div class="pz-row"><span class="pz-grp" style="color:#6699CC">H1</span><span><span class="pz-cat">🎯 SDR</span></span><span class="pz-val" style="color:var(--red)">R$ 400</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:#6699CC">H1</span><span><span class="pz-cat">💥 Closer</span></span><span class="pz-val" style="color:var(--red)">R$ 500</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--green)">H2</span><span><span class="pz-cat">🎯 SDR</span></span><span class="pz-val" style="color:var(--red)">R$ 650</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--green)">H2</span><span><span class="pz-cat">💥 Closer</span></span><span class="pz-val" style="color:var(--red)">R$ 800</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--org)">H3</span><span><span class="pz-cat">🎯 SDR</span></span><span class="pz-val" style="color:var(--red)">R$ 900</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--org)">H3</span><span><span class="pz-cat">💥 Closer</span></span><span class="pz-val" style="color:var(--red)">R$ 1.100</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--red)">H4</span><span><span class="pz-cat">🎯 SDR</span></span><span class="pz-val" style="color:var(--red)">R$ 1.100</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--red)">H4</span><span><span class="pz-cat">💥 Closer</span></span><span class="pz-val" style="color:var(--red)">R$ 1.500</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:var(--red)">H4</span><span><span class="pz-cat">🌐 Expansão</span></span><span class="pz-val" style="color:var(--red)">R$ 1.200</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:#9A7500">H5</span><span><span class="pz-cat">🎯 SDR</span><span class="onhappy">VOUCHER ONHAPPY</span></span><span class="pz-val" style="color:var(--red)">R$ 1.500</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:#9A7500">H5</span><span><span class="pz-cat">💥 Closer</span><span class="onhappy">VOUCHER ONHAPPY</span></span><span class="pz-val" style="color:var(--red)">R$ 1.500</span></div>
+        <div class="pz-row"><span class="pz-grp" style="color:#9A7500">H5</span><span><span class="pz-cat">🌐 Expansão</span><span class="onhappy">VOUCHER ONHAPPY</span></span><span class="pz-val" style="color:var(--red)">R$ 1.500</span></div>
+      </div>
+    </div>
+    <div class="esp-section fade-up">
+      <div class="esp-title">Prêmios especiais — todos os cenários</div>
+      <div class="esp-rows">
+        <div class="esp-row"><span class="esp-icon">⭐</span><span><span class="esp-nm">Craque do Jogo</span><span class="esp-dt">Toda sexta, por grupo — card especial com nome e stat</span></span><span class="esp-v">Reconhecimento</span></div>
+        <div class="esp-row"><span class="esp-icon">🏆</span><span><span class="esp-nm">Craque da Copa</span><span class="esp-dt">Melhor desempenho individual por pontuação relativa ao grupo</span></span><span class="esp-v">Reconhecimento</span></div>
+        <div class="esp-row"><span class="esp-icon">🏅</span><span><span class="esp-nm">Placas para os 12 campeões</span><span class="esp-dt">R$130/un. + arte R$550 + frete R$235 = R$2.345 total</span></span><span class="esp-v">R$ 130 cada</span></div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- COMUNICAÇÃO -->
-<section id="comunicacao">
-  <div class="sec-label fade-up">Comunicação</div>
+<div id="investimento" class="bg-dark" style="padding-top:0;padding-bottom:4rem">
+  <div class="inner" style="padding-top:3rem">
+    <span class="eyebrow fade-up" style="color:var(--gold)">Investimento</span>
+    <h2 class="sec-title light fade-up">Estimativa de custo total do projeto</h2>
+    <p style="font-size:.88rem;color:#666;font-style:italic;margin-bottom:1.4rem" class="fade-up">Use o Simulador de Custos na planilha para selecionar item a item e calcular o total exato com Sim/Não por linha.</p>
+    <div class="inv-scen fade-up">
+      <div class="inv-c"><span class="inv-lbl" style="color:#6699CC">💸 Econômico</span><span class="inv-v">~R$ 8.245</span><p class="inv-d">H1/H2 com experiências. Cash moderado em H3/H4. Voucher Onhappy R$800 para H5.</p></div>
+      <div class="inv-c rec"><span class="inv-badge">Recomendado</span><span class="inv-lbl" style="color:var(--gold)">⭐ Completo</span><span class="inv-v">~R$ 12.645</span><p class="inv-d">Cash em todos os grupos. Voucher Onhappy R$1.200 para H5. Placas, decoração e trave simples.</p></div>
+      <div class="inv-c"><span class="inv-lbl" style="color:var(--red)">🏆 Premium</span><span class="inv-v">~R$ 16.145</span><p class="inv-d">Cash alto em todos. Voucher Onhappy R$1.500. Trave completa + decoração premium.</p></div>
+    </div>
+    <div class="inv-note fade-up">💡 <strong>Placas:</strong> 12 campeões × R$130 = R$1.560 + arte R$550 + frete R$235 = <strong>R$2.345</strong>. Decoração inclui grama sintética (8m²), trave PVC (2 modelos), bolas DIY, fioratas, fitas, balões letras e acessórios. Use a aba <strong>📊 Simulador de Custos</strong> da planilha para simular cortes e ver o total em tempo real.</div>
+  </div>
+</div>
+
+<section id="comunicacao" class="section">
+  <span class="eyebrow fade-up" style="color:var(--red)">Comunicação</span>
   <h2 class="sec-title fade-up">A campanha precisa ser sentida do início ao fim</h2>
   <div class="divider"></div>
   <div class="comm-list">
-    <div class="comm-item fade-up"><div class="comm-when">2–10 Jun</div><div class="comm-card"><div class="comm-what">Lançamento oficial</div><span class="comm-canal">E-mail + All-hands</span><span class="comm-desc">Card da campanha, regras completas, premiações anunciadas, onde acompanhar o ranking e como os grupos foram formados.</span></div></div>
-    <div class="comm-item fade-up"><div class="comm-when">Toda sexta Fase Grupos</div><div class="comm-card"><div class="comm-what">Ranking semanal</div><span class="comm-canal">WhatsApp / Slack</span><span class="comm-desc">Ranking por regional + Craque do Jogo + provocação para a semana seguinte.</span></div></div>
-    <div class="comm-item fade-up"><div class="comm-when">27 Jun</div><div class="comm-card"><div class="comm-what">22 franquias classificadas</div><span class="comm-canal">WhatsApp + E-mail</span><span class="comm-desc">Card estilo tabela da Copa com os nomes das 22 franquias. Momento de celebração coletiva.</span></div></div>
-    <div class="comm-item fade-up"><div class="comm-when">Sprint 3 diário</div><div class="comm-card"><div class="comm-what">Ranking das 28 em tempo real</div><span class="comm-canal">WhatsApp / Slack</span><span class="comm-desc">Ranking individual atualizado diariamente — quem está dentro ou fora do top 16. Urgência máxima.</span></div></div>
-    <div class="comm-item fade-up"><div class="comm-when">4 Jul</div><div class="comm-card"><div class="comm-what">Bracket das Oitavas revelado</div><span class="comm-canal">WhatsApp + E-mail</span><span class="comm-desc">16 classificados por categoria + confrontos 1×1 com card estilo Copa.</span></div></div>
-    <div class="comm-item fade-up"><div class="comm-when">Toda 2ª Fase Elim.</div><div class="comm-card"><div class="comm-what">Bracket atualizado</div><span class="comm-canal">WhatsApp / Slack</span><span class="comm-desc">Confrontos da semana, placar provisório na quinta — quem está vencendo, quem pode virar.</span></div></div>
-    <div class="comm-item fade-up"><div class="comm-when">19 Jul</div><div class="comm-card" style="border-left-color:var(--gold)"><div class="comm-what">Cerimônia de premiação 🏆</div><span class="comm-canal">All-hands / Evento</span><span class="comm-desc">Anúncio dos campeões ao vivo, entrega dos troféus, recap visual da campanha.</span></div></div>
+    <div class="comm-item fade-up"><div class="comm-when">2–10 Jun</div><div class="comm-card"><div class="comm-what">Lançamento oficial</div><span class="comm-canal">E-mail + All-hands</span><span class="comm-desc">Grupos H1–H5 com faixas, premiações por cenário, 3 categorias, como funciona o ranking e a narrativa de duelo. Confrontos fictícios da Semana 1 revelados.</span></div></div>
+    <div class="comm-item fade-up"><div class="comm-when">Toda 2ª<br>Sprints 1-2</div><div class="comm-card duelo"><div class="comm-what">⚔ Confronto fictício da semana</div><span class="comm-canal" style="background:var(--blue);color:#fff">WhatsApp / Slack</span><span class="comm-desc">Por grupo: <em>"H2 — Unidade X (#3) enfrenta Unidade Y (#8)"</em>. Segue o ranking. Sem eliminação — só narrativa e drama.</span></div></div>
+    <div class="comm-item fade-up"><div class="comm-when">Toda 5ª<br>Sprints 1-2</div><div class="comm-card duelo"><div class="comm-what">⚔ Placar provisório do duelo</div><span class="comm-canal" style="background:var(--blue);color:#fff">WhatsApp / Slack</span><span class="comm-desc">Quem está vencendo, diferença de pontos, quem pode virar. <em>"Faltam 2 dias — ainda dá pra virar."</em></span></div></div>
+    <div class="comm-item fade-up"><div class="comm-when">Toda 6ª<br>Sprints 1-2</div><div class="comm-card duelo"><div class="comm-what">Resultado + ranking + próximo confronto</div><span class="comm-canal" style="background:var(--blue);color:#fff">WhatsApp / Slack</span><span class="comm-desc">Resultado do duelo + ranking top 5 + <strong>Craque do Jogo</strong> (card especial) + confronto fictício da semana seguinte.</span></div></div>
+    <div class="comm-item fade-up"><div class="comm-when">27 Jun</div><div class="comm-card"><div class="comm-what">Classificados anunciados</div><span class="comm-canal">WhatsApp + E-mail</span><span class="comm-desc">Top 8/16 por categoria e grupo. Card visual com os nomes. Quem ficou de fora precisa sentir que perdeu algo real.</span></div></div>
+    <div class="comm-item fade-up"><div class="comm-when">4 Jul</div><div class="comm-card"><div class="comm-what">Brackets reais revelados</div><span class="comm-canal">WhatsApp + E-mail</span><span class="comm-desc">Confrontos 1×1 reais por grupo e categoria. A partir daqui é pra valer — cada confronto elimina alguém.</span></div></div>
+    <div class="comm-item fade-up"><div class="comm-when">Toda 2ª<br>Fase Elim.</div><div class="comm-card"><div class="comm-what">Bracket + confrontos da semana</div><span class="comm-canal">WhatsApp / Slack</span><span class="comm-desc">Sempre com placar: <em>"Unidade X 47pts × 31pts Unidade Y — X avança!"</em> Nunca só "venceu".</span></div></div>
+    <div class="comm-item fade-up"><div class="comm-when">Toda 5ª<br>Fase Elim.</div><div class="comm-card"><div class="comm-what">Placar provisório real</div><span class="comm-canal">WhatsApp / Slack</span><span class="comm-desc">Quem está vencendo os confrontos, diferença, quem pode virar. Confrontos apertados ganham destaque especial.</span></div></div>
+    <div class="comm-item fade-up"><div class="comm-when">19 Jul</div><div class="comm-card gold"><div class="comm-what">Cerimônia de premiação 🏆</div><span class="comm-canal">All-hands / Evento</span><span class="comm-desc">12 campeões ao vivo. Craque da Copa. Entrega de placas e vouchers Onhappy. Recap com jornada de cada campeão.</span></div></div>
   </div>
 </section>
 
-<!-- PRÓXIMOS PASSOS -->
-<div id="proximos">
+<div class="bg-dark" style="padding:4rem 0" id="proximos">
   <div class="inner">
-    <div class="sec-label">Próximos passos</div>
-    <h2 class="closing-headline">A Sales Copa começa em <span>11 de junho</span>.</h2>
+    <p style="font-family:var(--font-d);font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:.8rem">Próximos passos</p>
+    <h2 class="closing-hl">A Sales Copa começa em <span>11 de junho</span>.</h2>
     <p class="closing-sub">O time comercial da V4 vai disputar seu próprio campeonato.</p>
-    <div class="next-steps">
-      <div class="next-step"><div class="step-num">1</div><div class="step-text">Aprovação do orçamento e definição das premiações</div></div>
-      <div class="next-step"><div class="step-num">2</div><div class="step-text">Definição dos grupos — quais franquias competem em cada regional</div></div>
-      <div class="next-step"><div class="step-num">3</div><div class="step-text">Lançamento oficial em 2 de junho com comunicação completa</div></div>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><div class="step-t">Aprovação do orçamento — escolher cenário Econômico, Recomendado ou Premium</div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-t">Confirmar H0 (4 incubadoras) no grupo H1 com a liderança</div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-t">Negociar condições com a Onhappy para os vouchers do H5</div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-t">Lançamento oficial em 2 de junho para toda a rede</div></div>
     </div>
-    <div class="footer">
-      V4 Company · Endomarketing Comercial · 2026<br>
-      Elaborado por Marina Felix Borges
-    </div>
+    <div class="footer">V4 Company · Endomarketing Comercial · 2026<br>Elaborado por Marina Felix Borges</div>
   </div>
 </div>
 
 <script>
-// Tab switching
-function switchTab(id, btn) {
-  document.querySelectorAll('.pts-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.pts-tab').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
+function swP(id,btn,cls){
+  document.querySelectorAll('.pts-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.pts-tab').forEach(b=>{b.classList.remove('active','ag','ap')});
+  document.getElementById('pt-'+id).classList.add('active');
+  btn.classList.add('active');
+  if(cls) btn.classList.add(cls);
+}
+function swPz(id,btn){
+  document.querySelectorAll('.pz-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.pz-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('pz-'+id).classList.add('active');
   btn.classList.add('active');
 }
-
-// Scroll animations
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-
-// Active nav link
-const sections = document.querySelectorAll('section[id], div[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-const navObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      navLinks.forEach(a => a.classList.remove('active'));
-      const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-      if (active) {
-        active.classList.add('active');
-        active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    }
-  });
-}, { threshold: 0.3 });
-sections.forEach(s => navObs.observe(s));
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+const secs=document.querySelectorAll('section[id],div[id]');
+const nl=document.querySelectorAll('.nav-links a');
+const no=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){nl.forEach(a=>a.classList.remove('active'));const a=document.querySelector(`.nav-links a[href="#${x.target.id}"]`);if(a){a.classList.add('active');a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}}})},{threshold:.25});
+secs.forEach(s=>no.observe(s));
 </script>
 </body>
 </html>
